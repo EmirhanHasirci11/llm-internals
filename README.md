@@ -66,4 +66,18 @@ Only token counting and model listing endpoints are used. Model IDs for Claude a
 pip install -r requirements.txt anthropic google-genai python-dotenv
 ```
 
-Optional, to enable the API and gated rows: create a `.env` file in the repo root (it is git-ignored) with `ANTHROPIC_API_KEY`, `GEMINI_API_KEY` and `HF_TOKEN`. If your Anthropic key is not scoped to a workspace, also set `ANTHROPIC_WORKSPACE_ID`. Empty values are treated as not set. Then run both notebooks top to bottom.
+Optional, to enable the API and gated rows, create a `.env` file in the repo root. It is git-ignored; never commit it.
+
+```
+ANTHROPIC_API_KEY=
+GEMINI_API_KEY=
+HF_TOKEN=
+# only if your Anthropic key is not scoped to a workspace (Console > Settings > Workspaces)
+ANTHROPIC_WORKSPACE_ID=
+```
+
+- Empty values are treated as not set, and those rows are reported as not measured.
+- The notebooks call only free endpoints: model listing and token counting. Nothing is generated.
+- Gated tokenizers (Llama, Gemma) also need their license accepted on the model's Hugging Face page.
+
+Then run both notebooks top to bottom.
